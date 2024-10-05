@@ -5,13 +5,21 @@
 
 # 1. Task Description
 Create a search functionality with three types of filters and searches:
-- ** Basic Search **: Filters based on the first name using a local dataset.
+- Basic Search : Filters based on the first name using a local dataset.
 - DataTable Search: Filters data by `first_name`, `last_name`, and `email` from a local dataset.
 - API Search: Filters data fetched from an external API with search criteria based on `first_name`, `last_name`, and `email`. The backend serves a REST API to perform these queries using Express.
 
 The application includes tab navigation to toggle between these different types of search functionalities.
 # 2. Task Output Screenshot
 <img width="524" alt="image" src="https://github.com/user-attachments/assets/f39cba96-665d-4fad-9e28-bb307afed317">
+<img width="524" alt="image" src="https://github.com/user-attachments/assets/fa4c7ecc-bbde-4b06-9396-4b3b20a16103">
+<img width="524" alt="image" src="https://github.com/user-attachments/assets/2d66db6d-dfe3-4a49-8155-c2a7be54546d">
+<img width="524" alt="image" src="https://github.com/user-attachments/assets/fd3768aa-ead4-459f-a305-803b765e9d61">
+<img width="524" alt="image" src="https://github.com/user-attachments/assets/db61abe5-cea3-4ce3-ade2-af40ba7fec1a">
+
+
+
+
 
 
 
