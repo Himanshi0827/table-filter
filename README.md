@@ -1,70 +1,67 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Task Report:
+### Filter Table Application with Search API
+### Implement a search component that filters a list of items based on user input.
 
-## Available Scripts
+# 1. Task Description
+Create a search functionality with three types of filters and searches:
+- ** Basic Search **: Filters based on the first name using a local dataset.
+- DataTable Search: Filters data by `first_name`, `last_name`, and `email` from a local dataset.
+- API Search: Filters data fetched from an external API with search criteria based on `first_name`, `last_name`, and `email`. The backend serves a REST API to perform these queries using Express.
 
-In the project directory, you can run:
+The application includes tab navigation to toggle between these different types of search functionalities.
+# 2. Task Output Screenshot
+<img width="524" alt="image" src="https://github.com/user-attachments/assets/f39cba96-665d-4fad-9e28-bb307afed317">
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+# 3. Widgets/Algorithm Used in Task
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- useState Hook: 
+  - Manages the state of the search query (`query`).
+  - Handles the active tab's state for tab switching (`setActiveTab`).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- useEffect Hook:
+  - For API Search, used to trigger the API call when the search query changes or is empty.
+  - Fetches data from the API endpoint (`localhost:5000?q=${query}`) and updates the result.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Input Field (`<input>`): 
+  - Captures the user’s search query. It is common to all three types of searches (basic, datatable, and API).
 
-### `npm run eject`
+- Button Widget:
+  - Used to create navigation buttons for switching between different search types (Basic Search, DataTable Search, and API Search).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Table Component: 
+  - Used to render filtered results in a tabular format for the DataTable Search and API Search.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Array Filter Algorithm:
+  - In Frontend: Filters the local dataset by searching across multiple fields (`first_name`, `last_name`, and `email`) using the `Array.filter()` method.
+  - In Backend (API Search): Similar logic is implemented in the backend to filter data from a predefined dataset (`Users`) and return a maximum of 10 results.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+  Search Algorithm Logic (both frontend and backend):
+  - The algorithm iterates over the data.
+  - For each data item, it checks if the query exists in any of the specified keys (`first_name`, `last_name`, or `email`) using `Array.some()`.
+  - The search is case-insensitive, converting both the query and data to lowercase before comparing.
+  
+- Axios Library:
+  - Used for making API calls from the frontend to the backend, fetching filtered results dynamically.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Express.js:
+  - Backend server serves the filtered data based on the user's search query by exposing a simple API endpoint.
 
-## Learn More
+  Backend Search Algorithm (in `server.js`):
+  js
+  const search = (data) => {
+    return data.filter((item) =>
+      keys.some((key) => item[key].toLowerCase().includes(q))
+    );
+  };
+  
+  - This backend algorithm matches the query with any of the `first_name`, `last_name`, or `email` fields and returns up to 10 results for efficiency.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- CORS Middleware:
+  - Ensures cross-origin communication between the frontend React app and the backend Express API.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
